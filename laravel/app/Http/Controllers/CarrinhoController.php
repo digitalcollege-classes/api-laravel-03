@@ -4,46 +4,43 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Models\Anuncio;
+use App\Models\Carrinho;
 use Symfony\Component\HttpFoundation\Request;
 
-class AnuncioController extends Controller
+class CarrinhoController extends Controller
 {
     public function index(): mixed
     {
-        return Anuncio::all(); // SELECT * FROM anuncios;
+        return Carrinho::all();
     }
 
     public function show(string $id): mixed
     {
-        return Anuncio::findOrFail($id);
+        return Carrinho::findOrFail($id);
     }
 
     public function store(Request $request): mixed
     {
-        // teria que fazer uma valida dos dados
-        return Anuncio::create($request->toArray());
+        return Carrinho::create($request->toArray());
     }
 
     public function update(Request $request, string $id): mixed
     {
-        $anuncio = Anuncio::findOrFail($id);
-        $anuncio->update($request->toArray());
-        return $anuncio;
+        $carrinho = Carrinho::findOrFail($id);
+        $carrinho->update($request->toArray());
+        return $carrinho;
     }
 
     public function destroy(string $id): mixed
     {
-        $anuncio = Anuncio::findOrFail($id);
+        $carrinho = Carrinho::findOrFail($id);
 
-        if (!$anuncio) {
+        if (!$carrinho) {
             return response()->json(status: 404);
         }
 
-        $anuncio->delete();
+        $carrinho->delete();
 
         return response()->json(status: 204);
     }
 }
-
-// php artisan migrate
