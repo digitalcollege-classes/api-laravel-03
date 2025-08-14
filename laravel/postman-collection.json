@@ -1,0 +1,285 @@
+{
+    "info": {
+        "name": "API Carrinho de Compras",
+        "description": "Collection completa para testar a API de Carrinho de Compras",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:8080/api"
+        }
+    ],
+    "item": [
+        {
+            "name": "Categorias",
+            "item": [
+                {
+                    "name": "Listar Categorias",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/categorias",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["categorias"]
+                        }
+                    }
+                },
+                {
+                    "name": "Criar Categoria",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nome\": \"Categoria Teste\",\n    \"descricao\": \"Categoria criada via Postman\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/categorias",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["categorias"]
+                        }
+                    }
+                },
+                {
+                    "name": "Buscar Categoria",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/categorias/1",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["categorias", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "Atualizar Categoria",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nome\": \"Categoria Atualizada\",\n    \"descricao\": \"Descrição atualizada\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/categorias/1",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["categorias", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "Deletar Categoria",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/categorias/6",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["categorias", "6"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Produtos",
+            "item": [
+                {
+                    "name": "Listar Produtos",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/produtos",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["produtos"]
+                        }
+                    }
+                },
+                {
+                    "name": "Criar Produto",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nome\": \"Produto Teste Postman\",\n    \"descricao\": \"Produto criado via Postman\",\n    \"preco\": 199.99,\n    \"categoria_id\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/produtos",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["produtos"]
+                        }
+                    }
+                },
+                {
+                    "name": "Buscar Produto",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/produtos/1",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["produtos", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "Atualizar Produto",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nome\": \"Produto Atualizado\",\n    \"descricao\": \"Descrição atualizada\",\n    \"preco\": 299.99,\n    \"categoria_id\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/produtos/1",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["produtos", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "Deletar Produto",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/produtos/11",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["produtos", "11"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Carrinhos",
+            "item": [
+                {
+                    "name": "Criar Carrinho",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"usuario_id\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/carrinhos",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["carrinhos"]
+                        }
+                    }
+                },
+                {
+                    "name": "Buscar Carrinho",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/carrinhos/1",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["carrinhos", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "Adicionar Produto ao Carrinho",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"produto_id\": 1,\n    \"quantidade\": 2\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/carrinhos/1/produtos",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["carrinhos", "1", "produtos"]
+                        }
+                    }
+                },
+                {
+                    "name": "Atualizar Quantidade no Carrinho",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"quantidade\": 5\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/carrinhos/1/produtos/1",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["carrinhos", "1", "produtos", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "Remover Produto do Carrinho",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/carrinhos/1/produtos/1",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["carrinhos", "1", "produtos", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "Finalizar Carrinho",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/carrinhos/1/finalizar",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["carrinhos", "1", "finalizar"]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
