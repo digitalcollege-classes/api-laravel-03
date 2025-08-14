@@ -4,91 +4,91 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Services\CategoryService;
+use App\Services\ProductService;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
-class CategoryController extends Controller
+class ProductController extends Controller
 {
-    protected $categoryService;
+    protected $productService;
 
-    public function __construct(CategoryService $categoryService)
+    public function __construct(ProductService $productService)
     {
-        $this->categoryService = $categoryService;
+        $this->productService = $productService;
     }
 
     /**
-     * Lista todas as categorias
+     * Lista todos os produtos
      */
     public function index(): JsonResponse
     {
         try {
-            $categories = $this->categoryService->getAllCategories();
-            return response()->json($categories);
+            $products = $this->productService->getAllProducts();
+            return response()->json($products);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
 
     /**
-     * Busca categoria específica
+     * Busca produto específico
      */
     public function show(string $id): JsonResponse
     {
         try {
-            $category = $this->categoryService->getCategoryById((int) $id);
+            $product = $this->productService->getProductById((int) $id);
 
-            if (!$category) {
-                return response()->json(['error' => 'Categoria não encontrada'], 404);
+            if (!$product) {
+                return response()->json(['error' => 'Produto não encontrado'], 404);
             }
 
-            return response()->json($category);
+            return response()->json($product);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
 
     /**
-     * Cria nova categoria
+     * Cria novo produto
      */
     public function store(Request $request): JsonResponse
     {
         try {
-            $category = $this->categoryService->createCategory($request->all());
-            return response()->json($category, 201);
+            $product = $this->productService->createProduct($request->all());
+            return response()->json($product, 201);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 400);
         }
     }
 
     /**
-     * Atualiza categoria existente
+     * Atualiza produto existente
      */
     public function update(Request $request, string $id): JsonResponse
     {
         try {
-            $success = $this->categoryService->updateCategory((int) $id, $request->all());
+            $success = $this->productService->updateProduct((int) $id, $request->all());
 
             if (!$success) {
-                return response()->json(['error' => 'Categoria não encontrada'], 404);
+                return response()->json(['error' => 'Produto não encontrado'], 404);
             }
 
-            return response()->json(['message' => 'Categoria atualizada com sucesso']);
+            return response()->json(['message' => 'Produto atualizado com sucesso']);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 400);
         }
     }
 
     /**
-     * Remove categoria
+     * Remove produto
      */
     public function destroy(string $id): JsonResponse
     {
         try {
-            $success = $this->categoryService->deleteCategory((int) $id);
+            $success = $this->productService->deleteProduct((int) $id);
 
             if (!$success) {
-                return response()->json(['error' => 'Categoria não encontrada'], 404);
+                return response()->json(['error' => 'Produto não encontrado'], 404);
             }
 
             return response()->json(null, 204);
