@@ -11,7 +11,7 @@ class CategoryController extends Controller
         $categorias = [
             [
                 'id' => 1,
-                'nome' => 'Carros suados',
+                'nome' => 'Carros, Vans, utilitários',
             ],
         ];
 
