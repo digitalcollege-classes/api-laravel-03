@@ -1,0 +1,35 @@
+get:
+  tags: [Anuncios]
+  description: Buscar um anuncio
+  parameters:
+  - name: id
+    in: path
+    schema:
+      type: integer
+      example: 1
+    required: true
+    description: Id do anuncio
+patch:
+  tags: [Anuncios]
+  description: Editar a foto de um anuncio
+  requestBody:
+    content:
+      "multipart/form-data":
+        schema:
+          type: object
+          properties:
+            # Define each part here
+            file:
+              type: string
+              format: binary # For file uploads
+            metadata:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+            description:
+              type: string
+delete:
+  tags: [Anuncios]

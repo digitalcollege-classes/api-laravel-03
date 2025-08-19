@@ -1,0 +1,40 @@
+get:
+  tags: [Anuncios]
+  summary: Todos os anuncios
+  description: Buscar todos os anuncios
+  responses:
+    200: 
+      description: Array de Anuncios
+      content:
+        "application/json": 
+          schema:
+            type: array
+            items:
+              allOf:
+                - $ref: '../../components/Anuncio.yaml'
+    
+post:
+  tags: [Anuncios]
+  summary: Cadastra um anuncio
+  requestBody:
+    content:
+      "application/json":
+        schema:
+          $ref: '../../components/Anuncio.yaml'
+  responses:
+    201:
+      description: Cadastrado com sucesso
+      content:
+        "application/json":
+          schema:
+            $ref: '../../components/Anuncio.yaml'
+    400:
+      description: Dados Invalidos
+      content:
+        "application/json":
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Mensagem do erro"
