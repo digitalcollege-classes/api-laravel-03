@@ -1,0 +1,11 @@
+type: object
+properties:
+  id:
+    type: integer
+    example: 1
+  titulo:
+    type: string
+    example: Celtinha 2012
+  preco:
+    type: float
+    example: 10987.89

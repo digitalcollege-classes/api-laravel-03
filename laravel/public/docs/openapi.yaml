@@ -1,0 +1,22 @@
+openapi: 3.1.1
+info:
+  title: API do sistema de classificados
+  description: Uma api de teste
+  version: 0.0.1
+
+tags:
+  - Anuncios
+  - Anunciantes
+  - Categorias
+
+
+paths:
+  /api/anuncios:
+    $ref: './paths/Anuncio/Collection.yaml'
+  /api/anuncios/{id}:
+    $ref: './paths/Anuncio/Item.yaml'
+
+components:
+  schemas:
+    Anuncio:
+      $ref: './components/Anuncio.yaml'
