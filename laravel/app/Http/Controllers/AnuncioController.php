@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AnuncioController extends Controller
 {
+    
     public function index(): mixed
     {
         return Anuncio::all(); // SELECT * FROM anuncios;
