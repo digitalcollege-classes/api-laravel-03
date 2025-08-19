@@ -5,19 +5,25 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\Anuncio;
+use App\Repository\AnuncioRepository;
 use Symfony\Component\HttpFoundation\Request;
+
 
 class AnuncioController extends Controller
 {
-    
+    public function __construct(
+        private AnuncioRepository $repository
+    ) {
+    }
+
     public function index(): mixed
     {
-        return Anuncio::all(); // SELECT * FROM anuncios;
+        return $this->repository->findAll(); 
     }
 
     public function show(string $id): mixed
     {
-        return Anuncio::findOrFail($id);
+        return Anuncio::find($id);
     }
 
     public function store(Request $request): mixed
