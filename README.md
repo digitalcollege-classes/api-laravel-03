@@ -5,3 +5,7 @@
 3. `docker compose exec php bash -c "php artisan db:seed"`
 
 Pronto, basta acessar <http://localhost:8080/api/anuncios>
+
+## Documentação da API
+
+<http://localhost:8080/docs/api>
