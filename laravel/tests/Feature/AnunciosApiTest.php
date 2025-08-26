@@ -17,7 +17,8 @@ class AnunciosApiTest extends TestCase
         $dados = $response->json();
 
         $response->assertStatus(200);
-        $this->assertEquals(2, count($dados));
+        $this->assertEquals(3, count($dados));
+        $this->assertCount(3, $dados);
         $this->assertEquals('Corola 2012 - Unico Dono', $dados[0]['titulo']);
     }
 
