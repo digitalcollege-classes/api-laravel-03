@@ -18,7 +18,7 @@ class AnuncioController extends Controller
 
     public function index(): mixed
     {
-        return $this->repository->findAll(); 
+        return $this->repository->findAll();
     }
 
     public function show(string $id): mixed
