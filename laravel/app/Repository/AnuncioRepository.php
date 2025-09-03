@@ -10,6 +10,6 @@ class AnuncioRepository
 {
     public function findAll(): mixed
     {
-        return Anuncio::all(['titulo']);
+        return Anuncio::all(['id', 'titulo']);
     }
 }

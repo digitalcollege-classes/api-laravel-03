@@ -47,6 +47,19 @@ services:
       MYSQL_USER: developer
       MYSQL_PASSWORD: 123456
 
+  mailer:
+    container_name: setup-laravel_mailer
+    image: axllent/mailpit
+    ports:
+      - '1025'
+      - '32770:8025'
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+    networks:
+      - setup-laravel_network
+
+
 networks:
   setup-laravel_network:
     driver: bridge

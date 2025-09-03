@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Jobs\EnviarEmailJob;
 use App\Models\User;
 use App\Models\Quantity;
+use App\Notification\UserCreatedNotification;
+use Illuminate\Support\Facades\Mail;
 use Symfony\Component\HttpFoundation\Request;
 
 use Illuminate\Support\Facades\DB;
@@ -15,7 +18,7 @@ class UserController extends Controller
 {
     public function index(): mixed
     {
-        return User::all(); 
+        return User::all();
     }
 
     public function show(string $id): mixed
@@ -47,10 +50,14 @@ class UserController extends Controller
 
         try {
             $user = User::create($dados);
-    
+
             $quantity = Quantity::where(['table' => 'users'])->first();
             $quantity->quantity += 1;
             $quantity->save();
+
+            // agendar o job pra enviar o email
+            // approach 1: disparando pelo controller
+            EnviarEmailJob::dispatch($user);
 
             DB::commit();
         } catch (\Exception $exception) {
@@ -58,6 +65,7 @@ class UserController extends Controller
 
             return response()->json([
                 'error' => 'Try again',
+                'exception' => $exception->getMessage(),
             ]);
         }
 
@@ -82,7 +90,7 @@ class UserController extends Controller
     //     if (false === isset($dados['email'])) {
     //         $errors['email'][] = 'email é obrigatorio';
     //     }
-        
+
     //     if (false === empty($errors)) {
     //         return response()->json([
     //             'error' => 'request body invalid',
