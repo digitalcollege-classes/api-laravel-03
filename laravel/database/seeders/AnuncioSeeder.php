@@ -20,6 +20,12 @@ class AnuncioSeeder extends Seeder
                 'descricao' => 'Vestido para pessoal exigente',
                 'preco' => 2989.19,
             ],
+
+            [
+                'titulo' => 'outro vestido longo de festa',
+                'descricao' => 'Vestido para pessoal exigente',
+                'preco' => 2989.19,
+            ],
         ];
 
         foreach ($anuncios as $anuncio) {
